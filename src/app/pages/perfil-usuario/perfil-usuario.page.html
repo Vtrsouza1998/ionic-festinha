@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>perfil-usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="usuario | async as user">
+    <ion-item>
+      <ion-text>
+        {{ user.nome }}
+      </ion-text>
+      </ion-text>
+        {{user.email}}
+      </ion-text>
+      </ion-text>
+        {{user.pws}}
+      </ion-text>
+      <ion-note> {{key}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content> 
