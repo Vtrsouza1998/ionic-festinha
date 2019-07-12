@@ -8,12 +8,18 @@
   <ion-list *ngIf="usuario | async as user">
     <ion-item>
       <ion-text>
-        {{ user.nome }}
+        {{user.nome }}
       </ion-text>
-      </ion-text>
+    </ion-item>
+    
+    <ion-item>
+      <ion-text>
         {{user.email}}
       </ion-text>
-      </ion-text>
+    </ion-item>
+      
+    <ion-item>
+      <ion-text>
         {{user.pws}}
       </ion-text>
       <ion-note> {{key}}</ion-note>
