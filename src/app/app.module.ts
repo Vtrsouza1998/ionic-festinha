@@ -13,18 +13,23 @@ import { AppComponent } from './app.component';
 import {AngularFireModule} from '@angular/fire'
 import { environment } from './../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { FormsModule } from '@angular/forms';
+import { Camera } from '@ionic-native/camera/ngx';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FormsModule, Camera
   ],
   bootstrap: [AppComponent]
 })
