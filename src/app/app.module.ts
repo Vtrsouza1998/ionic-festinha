@@ -16,6 +16,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { Camera } from '@ionic-native/camera/ngx';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MapsPage } from './pages/maps/maps.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FormsModule, Camera
+    FormsModule, Camera, Geolocation
   ],
   bootstrap: [AppComponent]
 })

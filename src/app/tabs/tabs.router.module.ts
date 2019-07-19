@@ -53,6 +53,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'loginWeb',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pages/login-usuario/login-usuario.module#LoginUsuarioPageModule'
+          }
+        ]
+      },
+      {
       path: 'tab3',
         children: [
           {

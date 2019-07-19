@@ -4,6 +4,9 @@ import { AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-add-usuario',
@@ -22,7 +25,8 @@ export class AddUsuarioPage implements OnInit {
     public router: Router,
     public usuarioService: UsuarioService,
     public activatedRouter: ActivatedRoute,
-    private camera: Camera
+    private camera: Camera,
+    private afAuth: AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -42,10 +46,14 @@ export class AddUsuarioPage implements OnInit {
 
   onSubmit(form) {
     if (form.valid) {
+      this.usuario.foto = this.preview;
       if (!this.key) {
-        this.usuarioService.save(this.usuario)
+        this.afAuth.auth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.pws)
           .then(
             res => {
+              this.usuario.email = null;
+              this.usuario.pws = null;
+              this.usuarioService.save(this.usuario, res.user.uid);
               this.presentAlert("Aviso", "cadastrado!");
               form.reset();
               this.router.navigate(['/']);

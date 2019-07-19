@@ -4,6 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content padding>
+  <ion-item lines="none">
+    <img src ="assets/avatar-perfil.jpg">
+  </ion-item>
+
 <ion-content>
   <ion-list *ngIf="usuario | async as user">
     <ion-item>
@@ -17,12 +22,10 @@
         {{user.email}}
       </ion-text>
     </ion-item>
+
+    <ion-button expand="block" fill="outline" (click)="logout()" routerLink="/">
+      SAIR
+    </ion-button>
       
-    <ion-item>
-      <ion-text>
-        {{user.pws}}
-      </ion-text>
-    <ion-item>{{key}}</ion-item>
-    </ion-item>
   </ion-list>
 </ion-content> 

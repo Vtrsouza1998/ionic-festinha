@@ -12,27 +12,27 @@ export class UsuarioService {
     public db: AngularFireDatabase
   ) { }
 
-  save(usuario:Usuario){
-    return this.db.list("usuario").push(usuario);
+  save(usuario: Usuario, key: string) {
+    return this.db.object("usuario/" + key).set(usuario);
   }
 
-  getAll(){
+  getAll() {
     return this.db.list("usuario").snapshotChanges()
-    .pipe(
-      map(noCopyIsDocs =>
-        noCopyIsDocs.map(c=> ({ key: c.payload.key, ...c.payload.val() })
-        ))
-    )
+      .pipe(
+        map(noCopyIsDocs =>
+          noCopyIsDocs.map(c => ({ key: c.payload.key, ...c.payload.val() })
+          ))
+      )
   }
   get(key: string) {
     return this.db.object<Usuario>("usuario/" + key).valueChanges()
-  } 
+  }
 
-  update(usuario:Usuario, key:string){
+  update(usuario: Usuario, key: string) {
     return this.db.object("usuario/" + key).update(usuario);
   }
 
-  remove(key:string){
+  remove(key: string) {
     return this.db.object("usuario/" + key).remove()
   }
 
