@@ -18,6 +18,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MapsPage } from './pages/maps/maps.page';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +32,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FormsModule, Camera, Geolocation
+    FormsModule, Camera, Geolocation, 
+    AndroidPermissions
   ],
   bootstrap: [AppComponent]
 })

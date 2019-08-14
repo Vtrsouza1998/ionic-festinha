@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PerfilEventoPage implements OnInit {
 
-  protected evento:any;
-  private key:string;
+  public evento:any;
+  public key:string;
   
   constructor(
     public eventoService:EventoService,

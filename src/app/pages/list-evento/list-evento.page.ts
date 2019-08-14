@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventoService } from 'src/app/services/evento.service';
+import {MensagensService } from './../../services/mensagens.service';
 
 @Component({
   selector: 'app-list-evento',
@@ -11,7 +12,8 @@ export class ListEventoPage implements OnInit {
   protected evento: any;
 
   constructor(
-    public eventoService: EventoService
+    public eventoService: EventoService,
+    public msg: MensagensService
   ) { }
 
   ngOnInit() {
@@ -29,5 +31,8 @@ export class ListEventoPage implements OnInit {
   
   atualizar(){}
 
-  remover(){}
+  remover(key: string){
+    this.eventoService.delete(key);
+    this.msg.presentLoading();
+  }
 }

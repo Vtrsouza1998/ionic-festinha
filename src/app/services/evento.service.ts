@@ -7,6 +7,9 @@ import { Evento } from '../model/evento';
   providedIn: 'root'
 })
 export class EventoService {
+  delete(key: string): any {
+    throw new Error("Method not implemented.");
+  }
 
   constructor(
     public db: AngularFireDatabase

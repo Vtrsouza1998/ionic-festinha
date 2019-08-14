@@ -21,28 +21,36 @@
     <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password" name="pws" [(ngModel)]="usuario.pws" #p="ngModel"
-     minlength="6" required></ion-input>
+  <ion-item lines="none" *ngIf= "key">
+    <ion-button>Redefinir Senha</ion-button>
   </ion-item>
-  <ion-text color="danger" *ngIf="p.invalid && p.dirty">
-    <strong>Senha muito curta!</strong>
-  </ion-text>
 
-  <ion-item>
-    <ion-label position="floating">Confirmar senha</ion-label>
-    <ion-input type="password" name="conf"[(ngModel)] ="conf" #c
-    ="ngModel" minlength="6"
-     required></ion-input>
-  </ion-item>
-  <ion-text color="danger" *ngIf="p.value != c.value">
-    <strong>Senhas diferentes!</strong>
-  </ion-text>
+    <div *ngIf="!key">
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" name="pws" [(ngModel)]="usuario.pws" 
+      #p="ngModel" minlength="6" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="p.invalid && p.dirty">
+      <strong>Senha muito curta!</strong>
+    </ion-text>
 
-<ion-item lines="none">
-  <ion-button type="submit"[disabled]="fc.invalid || (p.value != c.value)">Salvar</ion-button>
-  <ion-button type="reset" routerLink="/">Cancelar</ion-button>
-  </ion-item>
-</form>
+    <ion-item>
+      <ion-label position="floating">Confirmar senha</ion-label>
+      <ion-input type="password" name="conf"[(ngModel)] ="conf" 
+      #c="ngModel" minlength="6" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="p.value != c.value">
+        <strong>Senhas diferentes!</strong>
+      </ion-text>
+    </div>
+
+    <ion-item lines="none">
+      <ion-button type="submit"[disabled]="fc.invalid || (p.value != c.value)" *ngIf="!key">Salvar</ion-button>
+
+      <ion-button type="submit"[disabled]="fc.invalid || (p.value != c.value)" *ngIf="key">Atualizar</ion-button>
+
+      <ion-button type="reset" routerLink="/">Cancelar</ion-button>
+    </ion-item>
+  </form>
 </ion-content>

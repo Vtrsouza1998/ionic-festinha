@@ -18,7 +18,7 @@ export class AddUsuarioPage implements OnInit {
 
   public usuario: Usuario;
   public key: string;
-  protected preview:any;
+  protected preview: any;
 
   constructor(
     public alertController: AlertController,
@@ -35,9 +35,9 @@ export class AddUsuarioPage implements OnInit {
     this.key = this.activatedRouter.snapshot.paramMap.get("key");
     if (this.key) {
       this.usuarioService.get(this.key).subscribe(
-        res=>{
-        this.usuario = res
-        this.preview = res.foto
+        res => {
+          this.usuario = res
+          this.preview = res.foto
         },
         err => this.key = null
       );
@@ -51,7 +51,7 @@ export class AddUsuarioPage implements OnInit {
         this.afAuth.auth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.pws)
           .then(
             res => {
-              this.usuario.email = null;
+              //this.usuario.email = null;
               this.usuario.pws = null;
               this.usuarioService.save(this.usuario, res.user.uid);
               this.presentAlert("Aviso", "cadastrado!");
@@ -102,7 +102,7 @@ export class AddUsuarioPage implements OnInit {
   tirarFoto() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }

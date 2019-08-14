@@ -12,8 +12,14 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Tema</ion-label>
-    <ion-input type="tema" name="tema" [(ngModel)]="evento.tema" required></ion-input>
+    <ion-label>Tema</ion-label>
+    <ion-select value="brown" okText="Selecionar" cancelText="Cancelar">
+        <ion-select-option value="red">Festa de aniversário</ion-select-option>
+      <ion-select-option value="brown">Festa de rua</ion-select-option>
+      <ion-select-option value="blonde">Festa de familia</ion-select-option>
+      <ion-select-option value="black">Festa na escola</ion-select-option>
+      <ion-select-option value="blue">Festa na empresa</ion-select-option>
+    </ion-select>
   </ion-item>
 
   <ion-item>

@@ -8,8 +8,7 @@ import {
   GoogleMapOptions,
   CameraPosition,
   MarkerOptions,
-  Marker,
-  Environment
+  Marker                                                                   
 } from '@ionic-native/google-maps';
 
 @Component({
@@ -64,5 +63,28 @@ export class MapsPage implements OnInit {
       }
     };
     this.map = GoogleMaps.create('map_canvas', mapOptions);
+  }
+  
+  //Google market
+  marker: Marker;
+  mapClick() {
+    this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
+      res => {
+        // console.log(res);
+        if (this.marker) {
+          this.marker.setPosition(res[0]);
+        } else {
+          this.addMarket();
+        }
+    })
+}
+
+addMarket() {
+  this.marker = this.map.addMarkerSync({
+    position: {
+      lat: this.lat,
+      lng: this.lng
+      }
+    })
   }
 }

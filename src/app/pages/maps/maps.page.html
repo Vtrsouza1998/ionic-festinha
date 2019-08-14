@@ -3,11 +3,13 @@
     <ion-title>Mapas</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-button (click)="posLocal()">
-    Pos. Local {{ latlng }}
+  <div id="map_canvas" (click)="mapClick()">
+    <ion-button (click)="posLocal()">
+      Pos. Local: {{ lat }}  {{ lng }}
+    </ion-button>
+  </div>
+  <ion-button expand="block" fill="outline" (click)="logout()" routerLink="/">
+    SAIR
   </ion-button>
-
-  <div id="map_canvas"></div>
 </ion-content>
